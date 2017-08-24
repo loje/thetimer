@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>辩论赛计时器WEB版</title>
+
+		<!-- Bootstrap -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/framework.css" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+  	<body>
+		<div class="pass">
+			<div class="container">
+				<h1>辩论赛计时器<small>WEB版</small></h1>
+				<div class="input-group">
+					<span class="input-group-addon">比赛名称</span>
+					<input type="text" class="form-control" id="gamename" placeholder="请输入本场比赛的名称">
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon">正方队伍</span>
+					<input type="text" class="form-control" id="leftteamname" placeholder="请输入正方队伍名称">
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon">反方队伍</span>
+					<input type="text" class="form-control" id="rightteamname" placeholder="请输入反方队伍名称">
+				</div>
+
+				<div class="input-group">
+					<span class="input-group-addon">正方辩题</span>
+					<input type="text" class="form-control" id="lefttitle" placeholder="请输入正方队伍的辩题">
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon">反方辩题</span>
+					<input type="text" class="form-control" id="righttitle" placeholder="请输入反方队伍的辩题">
+				</div>
+
+				<button class="btn btn-warning enter-system" id="entersystem">进入系统</button>
+
+
+			</div>
+		</div>
+
+
+		<div class="timing-system blur">
+			<div class="thegame">
+				<div class="container">
+					<div class="gametable">
+						<div class="gametd">
+							<div class="gamec">
+								<h2>第十五届争鸣杯辩论赛</h2>
+
+								<div class="row the">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 theleft">
+										<p class="" id="leftteam">正方：</p>
+										<p class="" id="thelefttitle"></p>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 theright">
+										<p class="" id="rightteam">反方：</p>
+										<p class="" id="therighttitle"></p>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thebtn">
+										<button class="btn" id="step1">开始比赛</button>
+										<!-- <button class="btn" id="step5">演示</button> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="bottom">技术支持 学生创业公益汇</div>
+			</div>
+
+
+			<!-- 正方一辩开篇立论 -->
+			<div class="t1left" style="display:none;">
+				<h1>开篇立论<small>正方</small></h1>
+				<div class="time-item">
+					<div class="clock-tr">
+						<div class="theclock">
+							<div class="clock" id="oneleft_minute_show">02</div>
+							<div class="clock" id="oneleft_second_show">00</div>
+							<div class="labels">
+								<li>Mins</li>
+								<li>Secs</li>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="oneleft-start">
+					<button class="btn btn-success" id="oneleft_start">正方开始</button>
+					<button class="btn btn-success" id="oneleft_next" style="display:none;">结束本环节</button>
+					<!-- <button class="btn btn-success" id="oneleft_reset">重置</button> -->
+				</div>
+			</div>
+
+
+			<!-- 反方一辩开篇立论 -->
+			<div class="t1right" style="display:none;">
+				<h1>开篇立论<small>反方</small></h1>
+				<div class="time-item">
+					<div class="clock-tr">
+						<div class="theclock">
+							<div class="clock" id="oneright_minute_show">02</div>
+							<div class="clock" id="oneright_second_show">00</div>
+							<div class="labels">
+								<li>Mins</li>
+								<li>Secs</li>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="oneleft-start">
+					<button class="btn btn-success" id="oneright_start">反方开始</button>
+					<button class="btn btn-success" id="oneright_next" style="display:none;">结束本环节</button>
+				<!-- <button class="btn btn-success" id="oneright_reset">重置</button> -->
+				</div>
+			</div>
+
+
+			<!-- 正方自由辩论 -->
+			<div class="row t2" style="display:none;">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 t2left">
+					<h1>自由辩论<small>正方</small></h1>
+					<div class="time-item">
+						<div class="clock-tr">
+							<div class="theclock">
+								<div class="clock" id="twoleft_minute_show">06</div>
+								<div class="clock" id="twoleft_second_show">00</div>
+								<div class="labels">
+									<li>Mins</li>
+									<li>Secs</li>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<input type="hidden" id="t2left_m">
+				</div>
+
+				<!-- 反方自由辩论 -->
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 t2right">
+					<h1>自由辩论<small>反方</small></h1>
+					<div class="time-item">
+						<div class="clock-tr">
+							<div class="theclock">
+								<div class="clock" id="tworight_minute_show">06</div>
+								<div class="clock" id="tworight_second_show">00</div>
+								<div class="labels">
+									<li>Mins</li>
+									<li>Secs</li>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<input type="hidden" id="t2right_m">
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 twoleft-start">
+					<button class="btn btn-success" id="twoleft_start">正方开始</button>
+					<!-- <button class="btn btn-success" id="two_reset">重置</button> -->
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 two-next">
+					<button class="btn btn-success" id="two_next" style="display:none;">结束本环节</button>
+					<!-- <button class="btn btn-success" id="two_reset">重置</button> -->
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 tworight-start">
+					<button class="btn btn-success" id="tworight_start" disabled="disabled">反方开始</button>
+					<!-- <button class="btn btn-success" id="two_reset">重置</button> -->
+				</div>
+			</div>
+
+			<!-- 正方奇袭 -->
+			<div class="t3left" style="display:none;">
+				<h1>奇袭环节<small>正方</small></h1>
+				<div class="time-item">
+					<div class="clock-tr">
+						<div class="theclock">
+							<div class="clock" id="threeleft_minute_show">02</div>
+							<div class="clock" id="threeleft_second_show">00</div>
+							<div class="labels">
+								<li>Mins</li>
+								<li>Secs</li>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="oneleft-start">
+					<button class="btn btn-success" id="threeleft_start">正方开始</button>
+					<button class="btn btn-success" id="threeleft_next" style="display:none;">结束本环节</button>
+				</div>
+			</div>
+
+			<!-- 反方奇袭 -->
+			<div class="t3right" style="display:none;">
+				<h1>奇袭环节<small>反方</small></h1>
+				<div class="time-item">
+					<div class="clock-tr">
+						<div class="theclock">
+							<div class="clock" id="threeright_minute_show">02</div>
+							<div class="clock" id="threeright_second_show">00</div>
+							<div class="labels">
+								<li>Mins</li>
+								<li>Secs</li>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="oneleft-start">
+					<button class="btn btn-success" id="threeright_start">反方开始</button>
+					<button class="btn btn-success" id="threeright_next" style="display:none;">结束本环节</button>
+				</div>
+			</div>
+
+
+			<!-- 正方陈词 -->
+			<div class="t4left" style="display:none;">
+				<h1>陈词环节<small>反方</small></h1>
+				<div class="time-item">
+					<div class="clock-tr">
+						<div class="theclock">
+							<div class="clock" id="fourleft_minute_show">02</div>
+							<div class="clock" id="fourleft_second_show">30</div>
+							<div class="labels">
+								<li>Mins</li>
+								<li>Secs</li>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="oneleft-start">
+					<button class="btn btn-success" id="fourleft_start">反方开始</button>
+					<button class="btn btn-success" id="fourleft_next" style="display:none;">结束本环节</button>
+				</div>
+			</div>
+
+			<!-- 反方陈词 -->
+			<div class="t4right" style="display:none;">
+				<h1>陈词环节<small>正方</small></h1>
+				<div class="time-item">
+					<div class="clock-tr">
+						<div class="theclock">
+							<div class="clock" id="fourright_minute_show">02</div>
+							<div class="clock" id="fourright_second_show">30</div>
+							<div class="labels">
+								<li>Mins</li>
+								<li>Secs</li>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="oneleft-start">
+					<button class="btn btn-success" id="fourright_start">正方开始</button>
+					<button class="btn btn-success" id="fourright_next" style="display:none;">结束本环节</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="timesup" style="display:none;">
+			<div class="timesup-table">
+				<div class="timesup-td">
+					<h1>时间到！</h1>
+				</div>
+			</div>
+		</div>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="bootstrap/js/jquery.2.1.4.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/timer.js"></script>
+	</body>
+</html>
